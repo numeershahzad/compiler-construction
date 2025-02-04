@@ -1,0 +1,24 @@
+program -> Function | ArgList | Arg | Declaration | Type | IdentList | Stmt | ForStmt | OptExpr | LoopStmt | IfStmt | MagarPart | CompoundStmt | StmtList | Expr | Rvalue | Compare | Mag | Term | Factor 
+Function -> Type identifier < ArgList > CompoundStmt
+ArgList -> Arg	| ArgList ,Arg
+Arg -> Type identifier
+Declaration -> Type IdentList ;
+Type -> int | float
+IdentList -> identifier ,IdentList | identifier
+Stmt -> ForStmt	| WhileStmt | Expr ; | IfStmt | CompoundStmt	| Declaration | ;
+ForStmt -> for < Expr ; OptExpr ; OptExpr > Stmt
+OptExpr -> Expr	| ε
+LoopStmt -> loop < Expr > Stmt
+IfStmt -> agar < Expr > Stmt MagarPart
+MagarPart -> magar Stmt | ε
+CompoundStmt -> { StmtList }
+StmtList -> StmtListStmt | ε
+Expr -> Rvalue
+Rvalue -> Rvalue Compare Mag	| Mag
+Compare -> == | < | > | <= | >= | != | <>
+Mag -> Mag + Term | Mag – Term | Term
+Term -> Term * Factor | Term / Factor | Factor
+Factor -> < Expr > | identifier | number
+
+
+
